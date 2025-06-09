@@ -1189,7 +1189,7 @@ function startGame() {
             html: `<span class="red-text">
                      遊戲開始！！<br>
                      <span class="red-text text-lighten-3">
-                       你後面有車！請使用方向鍵移動小球 ><
+                       ㄟ你後面有車！請使用方向鍵移動小球 ><
                      </span>
                    </span>
                    `,
@@ -1200,7 +1200,7 @@ function startGame() {
             M.toast({
                 html: `<span class="teal-text text-accent-2">
                          遊戲開始！！<br>
-                         你後面有車！請使用方向鍵移動小球 >< 
+                         ㄟ你後面有車！請使用方向鍵移動小球 >< 
                        </span>`,
                 displayLength: 5000,
             });
@@ -1208,7 +1208,7 @@ function startGame() {
             M.toast({
                 html: `<span class="teal-text text-accent-2">
                          遊戲開始！！<br>
-                         你後面有車！請使用方向鍵移動小球 >< 
+                         ㄟ你後面有車！請使用方向鍵移動小球 >< 
                        </span>`,
                 displayLength: 2000,
             });
