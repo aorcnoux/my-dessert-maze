@@ -1187,9 +1187,9 @@ function startGame() {
     if (typeof DeviceMotionEvent === "undefined") {
         M.toast({
             html: `<span class="red-text">
-                     该浏览器不支持重力感应器！<br>
+                     遊戲開始！！<br>
                      <span class="red-text text-lighten-3">
-                       请使用方向键移动小球
+                       你後面有車！請使用方向鍵移動小球 ><
                      </span>
                    </span>
                    `,
