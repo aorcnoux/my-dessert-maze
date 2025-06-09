@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dessert Maze🧁</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #000;
+    }
+
+    .landing-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url('./img/landing-bg.png') no-repeat center center;
+      background-size: cover; /* 改這裡 → 填滿整個畫面 */
+      background-color: #000;
+    }
+
+    .enter-button {
+      position: absolute;
+      bottom: 5%; /* 微調高一點避免最下方邊緣 */
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 16px 40px;
+      font-size: 24px;
+      color: #fff;
+      background-color: #ff4069;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .enter-button:hover {
+      background-color: #ffa200;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="landing-container">
+    <a href="index.html" class="enter-button">🍰 進入遊戲</a>
+  </div>
+
+  <script>
+    // 設定標記表示使用者已經看過 landing page
+    document.querySelector('.enter-button').addEventListener('click', function() {
+        sessionStorage.setItem('hasVisitedLanding', 'true');
+        sessionStorage.setItem('allowIndex', 'true');
+        window.location.href = 'index.html';
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+/* Maze 區塊 */
+.maze {
+  position: relative;
+  display: inline-block;
+}
+
+#maze-ball {
+  position: absolute;
+  width: 100%; /* 依格子寬度自動縮放 */
+  height: 100%;
+  background: url('strawberry-hero.png') no-repeat center center;
+  background-size: contain;
+  background-color: transparent;
+  pointer-events: none;
+  transform: scale(5); /* 讓角色視覺放大 1.2 倍 */
+  transform-origin: center center;
+}
+
+
+/* Modal */
+.modal {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+
+.modal-trigger {
+  display: none;
+}
+
+.surprise-msg {
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+/* Control 區塊 */
+.control {
+  background-color: rgba(255, 248, 240, 0.95);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  border: 4px solid #e2c4a6;
+  backdrop-filter: blur(6px);
+}
+
+.control p {
+  color: #5e3c28;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.control .btn {
+  background-color: #d9a066 !important;
+  color: #fff8f0 !important;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.control .btn:hover {
+  background-color: #bf8b4a !important;
+}
+
+.control .range-field input[type="range"]::-webkit-slider-thumb {
+  background-color: #d9a066;
+}
+
+.control .range-field input[type="range"]::-moz-range-thumb {
+  background-color: #d9a066;
+}
+
+/* select */
+.control select {
+  background-color: #fff8f0 !important;
+  border: none;
+  box-shadow: none;
+  padding: 6px 8px;
+  color: #5e3c28 !important;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+/* 遊戲難度選單置中 */
+.control .game-level {
+  text-align: center !important;
+  text-align-last: center !important;
+}
+
+.control .game-level option {
+  text-align: center;
+}
+
+.surprise-msg {
+  padding-top: 25vh; /* 讓內容往下約 20% 視窗高度 */
+  text-align: center;
+}
+
+.close-btn-style {
+  background-color: white;         /* 白色實體方匡 */
+  border: 1px solid white;         /* 白色邊框（視覺一致） */
+  color: #ff6f3c !important;       /* 橘色字體 */
+  font-weight: bold;               /* 粗體 */
+  border-radius: 8px;              /* 圓角（可調） */
+  padding: 0px 10px;              /* 內距，讓方匡有空間 */
+  font-size: 1rem;                 /* 字大小 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;           /* 移除預設底線 */
+}
+
+.close-btn-style:hover {
+  background-color: #ffecd9;       /* hover 時淡橘底 */
+  color: #ff6f3c;                  /* 保持橘字 */
+}
