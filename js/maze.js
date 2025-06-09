@@ -1207,8 +1207,8 @@ function startGame() {
         } else {
             M.toast({
                 html: `<span class="teal-text text-accent-2">
-                         游戏开始！<br>
-                         请晃动手机，或使用方向键移动小球
+                         遊戲開始！！<br>
+                         你後面有車！請使用方向鍵移動小球 >< 
                        </span>`,
                 displayLength: 2000,
             });
