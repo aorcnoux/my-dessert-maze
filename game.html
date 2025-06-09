@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    if(document.referrer === '' || !document.referrer.includes(landing)){
+      window.location.replace('index.html')
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Dessert Maze🧁</title>
+  <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="./css/materialize.min.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <script>
+// 檢查使用者是否有權限訪問 index 頁面
+function checkAccess() {
+    const hasVisitedLanding = sessionStorage.getItem('hasVisitedLanding');
+    const allowIndex = sessionStorage.getItem('allowIndex');
+    
+    // 如果沒有訪問過 landing page 或沒有允許標記，就重定向
+    if (!hasVisitedLanding || !allowIndex) {
+        window.location.replace('index.html');
+        return;
+    }
+    
+    // 清除允許標記，這樣重新整理時就會跳轉
+    sessionStorage.removeItem('allowIndex');
+}
+
+// 頁面載入時立即檢查
+checkAccess();
+
+// 監聽頁面即將離開的事件（包括重新整理）
+window.addEventListener('beforeunload', function() {
+    // 確保重新整理時會跳轉到 landing page
+    sessionStorage.removeItem('allowIndex');
+});
+</script>
+</head>
+
+<body class="teal lighten-4" style="background: url('./img/cute-bg.png') no-repeat center center fixed; background-size: cover;">
+
+  <div class="container center-align"style="margin-top: 6vh;">
+    <div class="row"></div>
+
+    <!-- Maze -->
+    <div class="row">
+      <div class="maze">
+        <!-- Maze canvas -->
+        <canvas id="maze-map" class="z-depth-5"></canvas>
+        <!-- Ball -->
+        <div id="maze-ball"></div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="row center-align">
+      <div class="control teal col s12 m6 offset-m3 card-panel z-depth-3 row">
+        <!-- Maze size -->
+        <div class="row valign-wrapper" style="margin-bottom: 0;">
+          <div class="col s5">
+            <p class="teal-text text-lighten-5 control-label-left">🍫地圖大小：</p>
+          </div>
+          <div class="range-field col s7">
+            <input type="range" class="maze-size teal lighten-2" value="31" min="31" max="101" step="2" />
+          </div>
+        </div>
+
+        <!-- Game level -->
+        <div class="row valign-wrapper" style="margin-top: 0;">
+          <div class="col s5">
+            <p class="teal-text text-lighten-5 control-label-left">🍫遊戲難度：</p>
+          </div>
+          <div class="col s7">
+            <select class="game-level browser-default">
+              <option value="0" selected>簡單🍬</option>
+              <option value="2">困難🍬🍬</option>
+              <option value="1">複雜🍬🍬🍬</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Game control buttons -->
+        <div class="row">
+          <div class="col s6">
+            <button class="start-game btn waves-effect waves-light teal-text text-lighten-5" onclick="startGame()">🍭開始遊戲</button>
+          </div>
+          <div class="col s6">
+            <button class="btn waves-effect offset-m3 waves-light teal-text text-lighten-5" onclick="reGenMaze()">🍭重新生成</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hint button -->
+    <div class="fixed-action-btn">
+      <a class="game-hint btn-floating btn-large scale-transition waves-effect waves-light z-depth-3 teal lighten-1 scale-out" onclick="drawHintPath()">提示</a>
+    </div>
+
+    <!-- Modal -->
+    <div class="row">
+      <a class="waves-effect waves-light btn modal-trigger" href="#modal-surprise">Modal</a>
+      <div id="modal-surprise" class="modal">
+        <div class="modal-content">
+          <div class="fireworks"></div>
+          <div class="surprise-msg">
+            <h4 class="cute-text">恭喜過關</h4>
+
+            <style>
+              .cute-text {
+                font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif; /* 可愛風字體 */
+                font-weight: bold; /* 粗體 */
+                color: #ff8ec5; /* 夢幻粉色 */
+                text-shadow: 1px 1px 3px #ffc6e3; /* 加柔和陰影增加夢幻感 */
+                font-size: 10em; /* 字稍微大一點 */
+              }
+            </style>
+
+<p class="white-text text-darken-4 center-align big-bold-text">恭喜獲得阿叔茶具</p>
+<p class="big-bold-text">✨🎉🍵🙂‍↕️🙂‍✨</p>
+<p class="white-text text-darken-4 center-align big-bold-text">直接給你4️⃣個字🫵🏻</p>
+<p class="red-text text-darken-4 center-align big-bold-text white-outline">大展鴻圖🦅 有料👍🏻👍🏻👍🏻</p>
+
+<style>
+  .big-bold-text {
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+
+  .white-outline {
+    text-shadow:
+      -1px -1px 0 #fff,
+       1px -1px 0 #fff,
+      -1px  1px 0 #fff,
+       1px  1px 0 #fff; /* 四方向描白邊 */
+  }
+</style>
+
+
+<a href="index.html" class="close-btn-style waves-effect btn-flat right">關閉</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/materialize.min.js"></script>
+  <script>
+    M.AutoInit();
+    document.addEventListener('DOMContentLoaded', function () {
+      var elms = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elms, { endingTop: '0' });
+    });
+  </script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery.fireworks.min.js"></script>
+  <script src="./js/maze.js"></script>
+</body>
+</html>
